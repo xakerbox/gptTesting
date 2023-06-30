@@ -34,4 +34,4 @@ app.get('/hey', (req, res) => {
   res.status(200).json({message: 'Am here'})
 })
 
-app.listen(4353, () => {console.log('Started')}); // Local: 3256 External: 1236
+app.listen(80, () => {console.log('Started on port 80')}); // Local: 3256 External: 1236
