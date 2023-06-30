@@ -27,11 +27,13 @@ app.post('/', async (req, res) => {
   });
 
   console.log('Before message');
-  const chatGPTMes = await getChatGptMessages(msg);
+  // const chatGPTMes = await getChatGptMessages(msg);
   console.log('!!!!chatGPTMes:', chatGPTMes);
   // console.log('MESSAGE:', chatGPTMes.choices[0].message.content);
 
-  await sendMessage(channelId, contactId, chatGPTMes.choices[0].message.content);
+  // await sendMessage(channelId, contactId, chatGPTMes.choices[0].message.content);
+  await sendMessage(channelId, contactId, "Hello amigo!");
+
 });
 
 app.get('/hey', (req, res) => {
