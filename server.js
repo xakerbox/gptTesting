@@ -26,7 +26,7 @@ app.post('/', async (req, res) => {
     message: 'ok'
   });
 
-  
+  console.log('Before message');
   const chatGPTMes = await getChatGptMessages(msg);
   console.log('!!!!chatGPTMes:', chatGPTMes);
   // console.log('MESSAGE:', chatGPTMes.choices[0].message.content);
