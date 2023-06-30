@@ -20,8 +20,8 @@ const sendMessage = async(channelId, userId, msg) => {
         'Content-Type': 'application/json'
       }
     });
-  }catch(e){
-    console.log('Error in RespondIO Module:', e);
+  } catch(e){
+    console.log('Error in RespondIO Module:');
   }
   
 }
