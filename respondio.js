@@ -1,5 +1,5 @@
 const axios = require('axios');
-// require('dotenv').config();
+require('dotenv').config();
 
 const token = process.env.RESPONDIO_TOKEN;
 
@@ -28,6 +28,7 @@ const sendMessage = async(channelId, userId, msg) => {
 }
 
 (async () => {
+  // await sendMessage(148634, 98302311, 'Hello amigos!')
     // const identifier = 'kuzinvt@gmail.com';
     // const {data: res} = await axios.post(`https://api.respond.io/v2/contact/id:98302311/message`,{
     //   channelId: 148634,

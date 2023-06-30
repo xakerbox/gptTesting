@@ -22,9 +22,7 @@ app.post('/', async (req, res) => {
   console.log(msg);
   // const signature = req.get('X-Webhook-Signature');
   // console.log(signature);
-  res.json({
-    message: 'ok'
-  });
+
 
   console.log('Before message');
   // const chatGPTMes = await getChatGptMessages(msg);
@@ -33,6 +31,9 @@ app.post('/', async (req, res) => {
 
   // await sendMessage(channelId, contactId, chatGPTMes.choices[0].message.content);
   await sendMessage(channelId, contactId, "Hello amigo!");
+  res.json({
+    message: 'ok'
+  });
 
 });
 
