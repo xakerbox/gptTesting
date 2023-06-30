@@ -4,20 +4,26 @@ require('dotenv').config();
 const token = process.env.RESPONDIO_TOKEN;
 
 const sendMessage = async(channelId, userId, msg) => {
-  const {data: res} = await axios.post(`https://api.respond.io/v2/contact/id:${userId}/message`,{
-    channelId: channelId,
-    message: {
-      type: 'text',
-      text: msg,
-      // messageTag: 'CONFIRMED_EVENT_UPDATE',
-    }
-  },
-  {
-    headers: {
-      Authorization: 'Bearer ' + token,
-      'Content-Type': 'application/json'
-    }
-  });
+  try{
+    console.log('Am inside Respondio');
+    const {data: res} = await axios.post(`https://api.respond.io/v2/contact/id:${userId}/message`,{
+      channelId: channelId,
+      message: {
+        type: 'text',
+        text: msg,
+        // messageTag: 'CONFIRMED_EVENT_UPDATE',
+      }
+    },
+    {
+      headers: {
+        Authorization: 'Bearer ' + token,
+        'Content-Type': 'application/json'
+      }
+    });
+  }catch(e){
+    console.log('Error in RespondIO Module:', e);
+  }
+  
 }
 
 (async () => {
