@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const {sendMessage} = require('./respondio');
 const {getChatGptMessages} = require('./index')
+const path = require('path');
 
 const SIGNING_KEY = '3yN5Dy/AtipUshBjHTBigCHkwDJgm8pKRqcpWHfaZSw=';
 
@@ -9,6 +10,9 @@ const app = express();
 app.use(express.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+app.get('/', async(req, res) => {
+  res.sendFile(path.resolve('./index.html'));
+})
 
 app.post('/', async (req, res) => {
   // console.log(new Date().getHours, ':', new Date().getMinutes, ':', new Date().getSeconds(), req.body);
