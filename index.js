@@ -10,18 +10,23 @@ const config = new Configuration({
 const openai = new OpenAIApi(config);
 
 const getChatGptMessages = async(customerMessage) => {
-  const completion = {
-    model: 'gpt-3.5-turbo',
-    messages: [
-        { role: 'system', content: 'You are a helpful assistant at the parfume shop. Also you have to know, that prices for all perfumes are $100 for one bottle.' },
-        { role: 'user', content: customerMessage}
-    ],
-};
+  try {
+    const completion = {
+      model: 'gpt-3.5-turbo',
+      messages: [
+          { role: 'system', content: 'You are a helpful assistant at the parfume shop. Also you have to know, that prices for all perfumes are $100 for one bottle.' },
+          { role: 'user', content: customerMessage}
+      ],
+  };
+  
+    console.log('Am inside message generating');
+  
+    const {data: result} = await openai.createChatCompletion(completion);
+    return result;
+  } catch(e) {
+    console.log('error happens\n', e);
+  }
 
-console.log('Am inside message generating');
-
-  const {data: result} = await openai.createChatCompletion(completion);
-  return result;
 }
 
 // (async () => {
