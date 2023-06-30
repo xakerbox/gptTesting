@@ -1,0 +1,36 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const {sendMessage} = require('./respondio');
+const {getChatGptMessages} = require('./index')
+
+const SIGNING_KEY = '3yN5Dy/AtipUshBjHTBigCHkwDJgm8pKRqcpWHfaZSw=';
+
+const app = express();
+app.use(express.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+
+
+app.post('/', async (req, res) => {
+  // console.log(new Date().getHours, ':', new Date().getMinutes, ':', new Date().getSeconds(), req.body);
+  const {id: contactId} = req.body.contact;
+  const {message: {text: msg}, channelId} = req.body.message;
+  console.log(contactId);
+  console.log(msg);
+  // const signature = req.get('X-Webhook-Signature');
+  // console.log(signature);
+  res.json({
+    message: 'ok'
+  });
+
+  
+  const chatGPTMes = await getChatGptMessages(msg);
+  console.log('MESSAGE:', chatGPTMes.choices[0].message.content);
+
+  await sendMessage(channelId, contactId, chatGPTMes.choices[0].message.content);
+});
+
+app.get('/hey', (req, res) => {
+  res.status(200).json({message: 'Am here'})
+})
+
+app.listen(4353, () => {console.log('Started')}); // Local: 3256 External: 1236
