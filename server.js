@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const {sendMessage} = require('./respondio');
-const {getChatGptMessages} = require('./index')
+const {getChatGptMessages} = require('./openai')
 const path = require('path');
 
 const SIGNING_KEY = '3yN5Dy/AtipUshBjHTBigCHkwDJgm8pKRqcpWHfaZSw=';
