@@ -28,7 +28,8 @@ app.post('/', async (req, res) => {
 
   
   const chatGPTMes = await getChatGptMessages(msg);
-  console.log('MESSAGE:', chatGPTMes.choices[0].message.content);
+  console.log('!!!!chatGPTMes:', chatGPTMes);
+  // console.log('MESSAGE:', chatGPTMes.choices[0].message.content);
 
   await sendMessage(channelId, contactId, chatGPTMes.choices[0].message.content);
 });

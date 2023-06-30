@@ -21,7 +21,7 @@ const getChatGptMessages = async(customerMessage) => {
   
     console.log('Am inside message generating');
   
-    const {data: result} = await openai.createChatCompletion(completion);
+    const { data: result } = await openai.createChatCompletion(completion);
     return result;
   } catch(e) {
     console.log('error happens\n', e);
