@@ -6,6 +6,7 @@ const token = process.env.RESPONDIO_TOKEN;
 const sendMessage = async(channelId, userId, msg) => {
   try{
     console.log('Am inside Respondio');
+    console.log('TOKEN:', token);
     const {data: res} = await axios.post(`https://api.respond.io/v2/contact/id:${userId}/message`,{
       channelId: channelId,
       message: {
